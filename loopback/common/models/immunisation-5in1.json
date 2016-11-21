@@ -1,0 +1,55 @@
+{
+  "name": "Immunisation5In1",
+  "description": "Number, and percent, of children in Edinburgh who have completed their primary immunisation course of the DTP/Pol/Hib vaccine by 24 months of age. Also known as the '5-in-1' vaccination.",
+  "plural": "Immunisation5In1",
+  "base": "PersistedModel",
+  "idInjection": false,
+  "options": {
+    "validateUpsert": true
+  },
+  "mongodb": {
+    "collection": "Stats"
+  },
+  "properties": {
+    "id": {
+      "type": "number",
+      "required": true,
+      "id": true
+    },
+    "year": {
+      "type": "number",
+      "required": true
+    },
+    "zone": {
+      "type": "string",
+      "required": true,
+      "index": true
+    },
+    "indicator": {
+      "type": "string",
+      "required": true
+    },
+    "measure": {
+      "type": "string",
+      "required": true
+    },
+    "value": {
+      "type": "number",
+      "required": true
+    }
+  },
+  "validations": [],
+  "relations": {
+    "dataZone": {
+      "type": "belongsTo",
+      "model": "GeoJSONFeature",
+      "foreignKey": "zone",
+      "options": {
+        "validate": true,
+        "forceId": false
+      }
+    }
+  },
+  "acls": [],
+  "methods": {}
+}
